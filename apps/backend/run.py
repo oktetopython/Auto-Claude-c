@@ -40,6 +40,42 @@ if sys.version_info < (3, 10):  # noqa: UP036
     )
 
 import io
+import os
+
+# Initialize pywin32 DLL path on Windows BEFORE any imports that use it
+# This is needed because pywin32's DLLs are in a separate directory
+if sys.platform == "win32":
+    try:
+        # Get the directory where this script is located
+        _script_dir = os.path.dirname(os.path.abspath(__file__))
+        # Check if we're running from a packaged app (Electron)
+        _pywin32_system32 = None
+        
+        # Try packaged app location first (python-site-packages is sibling to backend)
+        _packaged_path = os.path.join(
+            os.path.dirname(_script_dir), "python-site-packages", "pywin32_system32"
+        )
+        if os.path.isdir(_packaged_path):
+            _pywin32_system32 = _packaged_path
+        else:
+            # Try to find it in sys.path (development mode)
+            for _path in sys.path:
+                _candidate = os.path.join(_path, "pywin32_system32")
+                if os.path.isdir(_candidate):
+                    _pywin32_system32 = _candidate
+                    break
+        
+        if _pywin32_system32 and os.path.isdir(_pywin32_system32):
+            os.add_dll_directory(_pywin32_system32)
+        
+        # Clean up
+        del _script_dir, _packaged_path, _pywin32_system32
+        if "_path" in dir():
+            del _path
+        if "_candidate" in dir():
+            del _candidate
+    except Exception:
+        pass  # Silently ignore if pywin32 setup fails
 
 # Configure safe encoding on Windows BEFORE any imports that might print
 # This handles both TTY and piped output (e.g., from Electron)

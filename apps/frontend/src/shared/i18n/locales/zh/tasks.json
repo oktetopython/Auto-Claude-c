@@ -1,0 +1,239 @@
+{
+  "wizard": {
+    "title": "创建新任务",
+    "draftRestored": "草稿已恢复",
+    "startFresh": "重新开始",
+    "description": "描述您想要构建的内容。AI 将分析您的请求并创建详细的规格说明。",
+    "descriptionLabel": "描述",
+    "descriptionPlaceholder": "描述您想要实现的功能、修复的错误或改进。请尽可能详细地说明需求、约束和预期行为。输入 @ 可引用文件。",
+    "descriptionHint": "可以将文件和图片复制/粘贴或拖放到描述中。",
+    "titleLabel": "任务标题",
+    "titleOptional": "（可选）",
+    "titlePlaceholder": "留空将根据描述自动生成",
+    "titleHint": "如果留空，将自动生成简短的描述性标题。",
+    "imageAdded": "图片添加成功！",
+    "classification": "分类（可选）",
+    "category": "类别",
+    "categoryPlaceholder": "选择类别",
+    "priority": "优先级",
+    "priorityPlaceholder": "选择优先级",
+    "complexity": "复杂度",
+    "complexityPlaceholder": "选择复杂度",
+    "impact": "影响范围",
+    "impactPlaceholder": "选择影响范围",
+    "classificationHint": "这些标签有助于组织和排序任务。它们是可选的，但对于筛选很有用。",
+    "requireReview": "编码前需要人工审查",
+    "requireReviewHint": "启用后，在编码阶段开始前，您将被提示审查规格说明和实施计划。这允许您批准、请求更改或提供反馈。",
+    "gitOptions": "Git 选项（可选）",
+    "baseBranch": "基础分支（可选）",
+    "baseBranchPlaceholder": "使用项目默认",
+    "baseBranchHint": "覆盖此任务的工作树将从哪个分支创建。留空将使用项目配置的默认分支。",
+    "browseFiles": "浏览文件",
+    "hideFiles": "隐藏文件",
+    "cancel": "取消",
+    "create": "创建任务",
+    "creating": "创建中...",
+    "errorNoDescription": "请提供描述",
+    "errorMaxImages": "最多允许 {{count}} 张图片",
+    "errorInvalidImageType": "无效的图片类型。允许的类型：{{types}}",
+    "errorProcessImage": "处理粘贴的图片失败",
+    "errorProcessDroppedImage": "处理拖放的图片失败",
+    "errorCreateFailed": "创建任务失败，请重试。"
+  },
+  "edit": {
+    "title": "编辑任务",
+    "description": "更新任务详情，包括标题、描述、分类、图片和设置。更改将保存到规格文件中。",
+    "descriptionLabel": "描述",
+    "descriptionPlaceholder": "描述您想要实现的功能、修复的错误或改进。请尽可能详细地说明需求、约束和预期行为。",
+    "descriptionHint": "提示：使用 {{shortcut}} 直接粘贴截图以添加参考图片。",
+    "titleLabel": "任务标题",
+    "titleOptional": "（可选）",
+    "titlePlaceholder": "留空将根据描述自动生成",
+    "titleHint": "如果留空，将自动生成简短的描述性标题。",
+    "imageAdded": "图片添加成功！",
+    "classification": "分类（可选）",
+    "category": "类别",
+    "categoryPlaceholder": "选择类别",
+    "priority": "优先级",
+    "priorityPlaceholder": "选择优先级",
+    "complexity": "复杂度",
+    "complexityPlaceholder": "选择复杂度",
+    "impact": "影响范围",
+    "impactPlaceholder": "选择影响范围",
+    "classificationHint": "这些标签有助于组织和排序任务。它们是可选的，但对于筛选很有用。",
+    "referenceImages": "参考图片（可选）",
+    "referenceImagesHint": "附加截图、模型或图表，为 AI 提供视觉上下文。",
+    "requireReview": "编码前需要人工审查",
+    "requireReviewHint": "启用后，在编码阶段开始前，您将被提示审查规格说明和实施计划。这允许您批准、请求更改或提供反馈。",
+    "cancel": "取消",
+    "save": "保存更改",
+    "saving": "保存中...",
+    "errorNoDescription": "描述是必填项",
+    "errorMaxImages": "最多允许 {{count}} 张图片",
+    "errorInvalidImageType": "无效的图片类型。允许的类型：{{types}}",
+    "errorProcessImage": "处理粘贴的图片失败",
+    "errorProcessDroppedImage": "处理拖放的图片失败",
+    "errorSaveFailed": "更新任务失败，请重试。"
+  },
+  "status": {
+    "backlog": "待办",
+    "todo": "待处理",
+    "in_progress": "进行中",
+    "review": "审查",
+    "complete": "完成",
+    "archived": "已归档"
+  },
+  "actions": {
+    "start": "开始",
+    "stop": "停止",
+    "recover": "恢复",
+    "resume": "继续",
+    "archive": "归档",
+    "delete": "删除",
+    "view": "查看详情"
+  },
+  "labels": {
+    "running": "运行中",
+    "aiReview": "AI 审查",
+    "needsReview": "需要审查",
+    "pending": "待处理",
+    "stuck": "卡住",
+    "incomplete": "未完成",
+    "recovering": "恢复中...",
+    "needsRecovery": "需要恢复",
+    "needsResume": "需要继续"
+  },
+  "reviewReason": {
+    "completed": "已完成",
+    "hasErrors": "有错误",
+    "qaIssues": "QA 问题",
+    "approvePlan": "批准计划"
+  },
+  "tooltips": {
+    "archiveTask": "归档任务",
+    "archiveAllDone": "归档所有已完成的任务"
+  },
+  "creation": {
+    "title": "创建新任务",
+    "description": "描述您想要构建的内容",
+    "placeholder": "描述您的任务..."
+  },
+  "empty": {
+    "title": "暂无任务",
+    "description": "创建您的第一个任务以开始"
+  },
+  "kanban": {
+    "emptyBacklog": "没有计划的任务",
+    "emptyBacklogHint": "添加任务以开始",
+    "emptyInProgress": "没有正在运行的任务",
+    "emptyInProgressHint": "从待办中启动任务",
+    "emptyAiReview": "没有正在审查的任务",
+    "emptyAiReviewHint": "AI 将审查已完成的任务",
+    "emptyHumanReview": "没有需要审查的内容",
+    "emptyHumanReviewHint": "任务在此等待您的批准",
+    "emptyDone": "没有已完成的任务",
+    "emptyDoneHint": "已批准的任务将显示在这里",
+    "emptyDefault": "没有任务",
+    "dropHere": "拖放到这里",
+    "showArchived": "显示已归档"
+  },
+  "execution": {
+    "phases": {
+      "idle": "空闲",
+      "planning": "规划中",
+      "coding": "编码中",
+      "reviewing": "审查中",
+      "fixing": "修复中",
+      "complete": "完成",
+      "failed": "失败"
+    },
+    "labels": {
+      "interrupted": "已中断",
+      "progress": "进度",
+      "entry": "条目",
+      "entries": "条目"
+    },
+    "shortPhases": {
+      "plan": "计划",
+      "code": "代码",
+      "qa": "QA"
+    }
+  },
+  "files": {
+    "title": "文件",
+    "tab": "文件",
+    "noSpecPath": "没有可用的规格文件",
+    "noFiles": "未找到文件",
+    "loading": "加载文件中...",
+    "loadingContent": "加载内容中...",
+    "errorLoading": "加载文件失败",
+    "errorLoadingContent": "加载文件内容失败",
+    "retry": "重试",
+    "selectFile": "选择一个文件以查看其内容",
+    "openInIDE": "在 IDE 中打开"
+  },
+  "detail": {
+    "tabs": {
+      "overview": "概览",
+      "subtasks": "子任务",
+      "logs": "日志"
+    },
+    "actions": {
+      "recovering": "恢复中...",
+      "recoverTask": "恢复任务",
+      "resumeTask": "继续任务",
+      "startTask": "开始任务",
+      "stopTask": "停止任务",
+      "deleteTask": "删除任务",
+      "close": "关闭",
+      "taskCompletedSuccessfully": "任务已成功完成"
+    },
+    "status": {
+      "taskCompleted": "任务已完成",
+      "stuck": "卡住",
+      "incomplete": "未完成",
+      "completed": "已完成",
+      "hasErrors": "有错误",
+      "approvePlan": "批准计划",
+      "qaIssues": "QA 问题"
+    },
+    "subtasksCount": "{{completed}}/{{total}} 子任务",
+    "deleteDialog": {
+      "title": "删除任务",
+      "confirmMessage": "您确定要删除",
+      "warningMessage": "此操作无法撤销。所有任务文件，包括规格说明、实施计划和任何生成的代码都将从项目中永久删除。",
+      "cancel": "取消",
+      "deleting": "删除中...",
+      "deletePermanently": "永久删除"
+    },
+    "discardDialog": {
+      "title": "放弃构建",
+      "confirmMessage": "您确定要放弃所有更改吗",
+      "warningMessage": "这将永久删除隔离的工作区和所有未提交的更改。任务将被移回规划状态。",
+      "filesChanged": "已更改文件：",
+      "lines": "行数：",
+      "cancel": "取消",
+      "discarding": "放弃中...",
+      "discardBuild": "放弃构建"
+    },
+    "diffDialog": {
+      "title": "已更改文件",
+      "noChanges": "未找到更改",
+      "noFilesFound": "未找到已更改的文件",
+      "close": "关闭"
+    },
+    "conflictDialog": {
+      "title": "合并冲突预览",
+      "conflictsDetected": "检测到 {{count}} 个潜在冲突。",
+      "canAutoMerge": "{{count}} 个可以自动合并。",
+      "noConflicts": "未检测到冲突",
+      "close": "关闭",
+      "stageWithAIMerge": "使用 AI 合并暂存",
+      "mergeWithAI": "使用 AI 合并",
+      "location": "位置：",
+      "reason": "原因：",
+      "strategy": "策略：",
+      "autoMerge": "自动合并"
+    }
+  }
+}

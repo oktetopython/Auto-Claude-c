@@ -645,6 +645,17 @@ function installPackages(pythonBin, requirementsPath, targetSitePackages) {
   // Strip unnecessary files
   stripSitePackages(targetSitePackages);
 
+  // Fix pywin32 on Windows: create __init__.py in pywin32_system32 directory
+  // This is needed because pywin32_bootstrap.py tries to import pywin32_system32 as a module
+  const pywin32System32Dir = path.join(targetSitePackages, 'pywin32_system32');
+  if (fs.existsSync(pywin32System32Dir)) {
+    const initPyPath = path.join(pywin32System32Dir, '__init__.py');
+    if (!fs.existsSync(initPyPath)) {
+      fs.writeFileSync(initPyPath, '# pywin32_system32 package marker\n');
+      console.log(`[download-python] Created pywin32_system32/__init__.py for DLL loading`);
+    }
+  }
+
   // Remove bin/Scripts directory (we don't need console scripts)
   const binDir = path.join(targetSitePackages, 'bin');
   const scriptsDir = path.join(targetSitePackages, 'Scripts');

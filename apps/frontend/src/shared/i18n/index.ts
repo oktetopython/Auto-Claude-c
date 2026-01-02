@@ -11,6 +11,7 @@ import enOnboarding from './locales/en/onboarding.json';
 import enDialogs from './locales/en/dialogs.json';
 import enGitlab from './locales/en/gitlab.json';
 import enTaskReview from './locales/en/taskReview.json';
+import enPages from './locales/en/pages.json';
 
 // Import French translation resources
 import frCommon from './locales/fr/common.json';
@@ -22,6 +23,18 @@ import frOnboarding from './locales/fr/onboarding.json';
 import frDialogs from './locales/fr/dialogs.json';
 import frGitlab from './locales/fr/gitlab.json';
 import frTaskReview from './locales/fr/taskReview.json';
+
+// Import Chinese translation resources
+import zhCommon from './locales/zh/common.json';
+import zhNavigation from './locales/zh/navigation.json';
+import zhSettings from './locales/zh/settings.json';
+import zhTasks from './locales/zh/tasks.json';
+import zhWelcome from './locales/zh/welcome.json';
+import zhOnboarding from './locales/zh/onboarding.json';
+import zhDialogs from './locales/zh/dialogs.json';
+import zhGitlab from './locales/zh/gitlab.json';
+import zhTaskReview from './locales/zh/taskReview.json';
+import zhPages from './locales/zh/pages.json';
 
 export const defaultNS = 'common';
 
@@ -35,7 +48,8 @@ export const resources = {
     onboarding: enOnboarding,
     dialogs: enDialogs,
     gitlab: enGitlab,
-    taskReview: enTaskReview
+    taskReview: enTaskReview,
+    pages: enPages
   },
   fr: {
     common: frCommon,
@@ -46,7 +60,20 @@ export const resources = {
     onboarding: frOnboarding,
     dialogs: frDialogs,
     gitlab: frGitlab,
-    taskReview: frTaskReview
+    taskReview: frTaskReview,
+    pages: enPages // Fallback to English for French
+  },
+  zh: {
+    common: zhCommon,
+    navigation: zhNavigation,
+    settings: zhSettings,
+    tasks: zhTasks,
+    welcome: zhWelcome,
+    onboarding: zhOnboarding,
+    dialogs: zhDialogs,
+    gitlab: zhGitlab,
+    taskReview: zhTaskReview,
+    pages: zhPages
   }
 } as const;
 
@@ -57,7 +84,7 @@ i18n
     lng: 'en', // Default language (will be overridden by settings)
     fallbackLng: 'en',
     defaultNS,
-    ns: ['common', 'navigation', 'settings', 'tasks', 'welcome', 'onboarding', 'dialogs', 'gitlab', 'taskReview'],
+    ns: ['common', 'navigation', 'settings', 'tasks', 'welcome', 'onboarding', 'dialogs', 'gitlab', 'taskReview', 'pages'],
     interpolation: {
       escapeValue: false // React already escapes values
     },

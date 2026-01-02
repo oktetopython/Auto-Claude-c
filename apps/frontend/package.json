@@ -136,6 +136,7 @@
     "appId": "com.autoclaude.ui",
     "productName": "Auto-Claude",
     "artifactName": "${productName}-${version}-${platform}-${arch}.${ext}",
+    "npmRebuild": false,
     "publish": [
       {
         "provider": "github",
@@ -153,8 +154,20 @@
     ],
     "extraResources": [
       {
-        "from": "node_modules/@lydell/node-pty",
-        "to": "node_modules/@lydell/node-pty"
+        "from": "node_modules/@lydell/node-pty-win32-x64",
+        "to": "node_modules/@lydell/node-pty-win32-x64"
+      },
+      {
+        "from": "node_modules/@lydell/node-pty/index.js",
+        "to": "node_modules/@lydell/node-pty/index.js"
+      },
+      {
+        "from": "node_modules/@lydell/node-pty/node-pty.d.ts",
+        "to": "node_modules/@lydell/node-pty/node-pty.d.ts"
+      },
+      {
+        "from": "node_modules/@lydell/node-pty/package.json",
+        "to": "node_modules/@lydell/node-pty/package.json"
       },
       {
         "from": "resources/icon.ico",
@@ -201,6 +214,7 @@
     },
     "win": {
       "icon": "resources/icon.ico",
+      "signAndEditExecutable": false,
       "target": [
         "nsis",
         "zip"

@@ -105,6 +105,10 @@ class StackDetector:
         if self.parser.file_exists("*.cpp", "*.hpp", "*.cc", "**/*.cpp", "**/*.hpp"):
             self.stack.languages.append("cpp")
 
+        # CUDA
+        if self.parser.file_exists("*.cu", "*.cuh", "**/*.cu", "**/*.cuh"):
+            self.stack.languages.append("cuda")
+
         # Elixir
         if self.parser.file_exists("mix.exs", "*.ex", "**/*.ex"):
             self.stack.languages.append("elixir")
@@ -338,11 +342,30 @@ class StackDetector:
             ".semgrep.yml": "semgrep",
             ".snyk": "snyk",
             ".trivyignore": "trivy",
+            # C/C++ tools
+            ".clang-tidy": "clang-tidy",
+            ".clang-format": "clang-format",
+            ".cppcheck": "cppcheck",
+            "compile_commands.json": "clang-tidy",
+            # CUDA tools
+            ".cuda-memcheck": "cuda-tools",
         }
 
         for config, tool in tool_configs.items():
             if self.parser.file_exists(config):
                 self.stack.code_quality_tools.append(tool)
+
+        # Also detect tools if C/C++/CUDA languages are present
+        if "c" in self.stack.languages or "cpp" in self.stack.languages:
+            # Add common C/C++ analysis tools
+            for tool in ["cppcheck", "clang-tidy", "clang-format", "valgrind", "lizard"]:
+                if tool not in self.stack.code_quality_tools:
+                    self.stack.code_quality_tools.append(tool)
+
+        if "cuda" in self.stack.languages:
+            # Add CUDA analysis tools
+            if "cuda-tools" not in self.stack.code_quality_tools:
+                self.stack.code_quality_tools.append("cuda-tools")
 
     def detect_version_managers(self) -> None:
         """Detect version managers."""

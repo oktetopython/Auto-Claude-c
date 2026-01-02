@@ -177,12 +177,12 @@ function TaskDetailModalContent({ open, task, onOpenChange, onSwitchToTerminals,
           {state.isRecovering ? (
             <>
               <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-              Recovering...
+              {t('tasks:detail.actions.recovering')}
             </>
           ) : (
             <>
               <RotateCcw className="mr-2 h-4 w-4" />
-              Recover Task
+              {t('tasks:detail.actions.recoverTask')}
             </>
           )}
         </Button>
@@ -193,7 +193,7 @@ function TaskDetailModalContent({ open, task, onOpenChange, onSwitchToTerminals,
       return (
         <Button variant="default" onClick={handleStartStop}>
           <Play className="mr-2 h-4 w-4" />
-          Resume Task
+          {t('tasks:detail.actions.resumeTask')}
         </Button>
       );
     }
@@ -207,12 +207,12 @@ function TaskDetailModalContent({ open, task, onOpenChange, onSwitchToTerminals,
           {state.isRunning ? (
             <>
               <Square className="mr-2 h-4 w-4" />
-              Stop Task
+              {t('tasks:detail.actions.stopTask')}
             </>
           ) : (
             <>
               <Play className="mr-2 h-4 w-4" />
-              Start Task
+              {t('tasks:detail.actions.startTask')}
             </>
           )}
         </Button>
@@ -223,7 +223,7 @@ function TaskDetailModalContent({ open, task, onOpenChange, onSwitchToTerminals,
       return (
         <div className="completion-state text-sm flex items-center gap-2 text-success">
           <CheckCircle2 className="h-5 w-5" />
-          <span className="font-medium">Task completed</span>
+          <span className="font-medium">{t('tasks:detail.status.taskCompleted')}</span>
         </div>
       );
     }
@@ -274,13 +274,13 @@ function TaskDetailModalContent({ open, task, onOpenChange, onSwitchToTerminals,
                       {state.isStuck ? (
                         <Badge variant="warning" className="text-xs flex items-center gap-1 animate-pulse">
                           <AlertTriangle className="h-3 w-3" />
-                          Stuck
+                          {t('tasks:detail.status.stuck')}
                         </Badge>
                       ) : state.isIncomplete ? (
                         <>
                           <Badge variant="warning" className="text-xs flex items-center gap-1">
                             <AlertTriangle className="h-3 w-3" />
-                            Incomplete
+                            {t('tasks:detail.status.incomplete')}
                           </Badge>
                         </>
                       ) : (
@@ -296,9 +296,9 @@ function TaskDetailModalContent({ open, task, onOpenChange, onSwitchToTerminals,
                               variant={task.reviewReason === 'completed' ? 'success' : task.reviewReason === 'errors' ? 'destructive' : 'warning'}
                               className="text-xs"
                             >
-                              {task.reviewReason === 'completed' ? 'Completed' :
-                               task.reviewReason === 'errors' ? 'Has Errors' :
-                               task.reviewReason === 'plan_review' ? 'Approve Plan' : 'QA Issues'}
+                              {task.reviewReason === 'completed' ? t('tasks:detail.status.completed') :
+                               task.reviewReason === 'errors' ? t('tasks:detail.status.hasErrors') :
+                               task.reviewReason === 'plan_review' ? t('tasks:detail.status.approvePlan') : t('tasks:detail.status.qaIssues')}
                             </Badge>
                           )}
                         </>
@@ -366,19 +366,19 @@ function TaskDetailModalContent({ open, task, onOpenChange, onSwitchToTerminals,
                     value="overview"
                     className="rounded-none border-b-2 border-transparent data-[state=active]:border-primary data-[state=active]:bg-transparent data-[state=active]:shadow-none px-4 py-2.5 text-sm"
                   >
-                    Overview
+                    {t('tasks:detail.tabs.overview')}
                   </TabsTrigger>
                   <TabsTrigger
                     value="subtasks"
                     className="rounded-none border-b-2 border-transparent data-[state=active]:border-primary data-[state=active]:bg-transparent data-[state=active]:shadow-none px-4 py-2.5 text-sm"
                   >
-                    Subtasks ({task.subtasks.length})
+                    {t('tasks:detail.tabs.subtasks')} ({task.subtasks.length})
                   </TabsTrigger>
                   <TabsTrigger
                     value="logs"
                     className="rounded-none border-b-2 border-transparent data-[state=active]:border-primary data-[state=active]:bg-transparent data-[state=active]:shadow-none px-4 py-2.5 text-sm"
                   >
-                    Logs
+                    {t('tasks:detail.tabs.logs')}
                   </TabsTrigger>
                   {showFilesTab && (
                     <TabsTrigger
@@ -478,12 +478,12 @@ function TaskDetailModalContent({ open, task, onOpenChange, onSwitchToTerminals,
                 disabled={state.isRunning && !state.isStuck}
               >
                 <Trash2 className="mr-2 h-4 w-4" />
-                Delete Task
+                {t('tasks:detail.actions.deleteTask')}
               </Button>
               <div className="flex-1" />
               {renderPrimaryAction()}
               <Button variant="outline" onClick={handleClose}>
-                Close
+                {t('tasks:detail.actions.close')}
               </Button>
             </div>
           </DialogPrimitive.Content>
@@ -503,15 +503,15 @@ function TaskDetailModalContent({ open, task, onOpenChange, onSwitchToTerminals,
           <AlertDialogHeader>
             <AlertDialogTitle className="flex items-center gap-2">
               <AlertTriangle className="h-5 w-5 text-destructive" />
-              Delete Task
+              {t('tasks:detail.deleteDialog.title')}
             </AlertDialogTitle>
             <AlertDialogDescription asChild>
               <div className="text-sm text-muted-foreground space-y-3">
                 <p>
-                  Are you sure you want to delete <strong className="text-foreground">"{task.title}"</strong>?
+                  {t('tasks:detail.deleteDialog.confirmMessage')} <strong className="text-foreground">"{task.title}"</strong>?
                 </p>
                 <p className="text-destructive">
-                  This action cannot be undone. All task files, including the spec, implementation plan, and any generated code will be permanently deleted from the project.
+                  {t('tasks:detail.deleteDialog.warningMessage')}
                 </p>
                 {state.deleteError && (
                   <p className="text-destructive bg-destructive/10 px-3 py-2 rounded-lg text-sm">
@@ -522,7 +522,7 @@ function TaskDetailModalContent({ open, task, onOpenChange, onSwitchToTerminals,
             </AlertDialogDescription>
           </AlertDialogHeader>
           <AlertDialogFooter>
-            <AlertDialogCancel disabled={state.isDeleting}>Cancel</AlertDialogCancel>
+            <AlertDialogCancel disabled={state.isDeleting}>{t('tasks:detail.deleteDialog.cancel')}</AlertDialogCancel>
             <AlertDialogAction
               onClick={(e) => {
                 e.preventDefault();
@@ -534,12 +534,12 @@ function TaskDetailModalContent({ open, task, onOpenChange, onSwitchToTerminals,
               {state.isDeleting ? (
                 <>
                   <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                  Deleting...
+                  {t('tasks:detail.deleteDialog.deleting')}
                 </>
               ) : (
                 <>
                   <Trash2 className="mr-2 h-4 w-4" />
-                  Delete Permanently
+                  {t('tasks:detail.deleteDialog.deletePermanently')}
                 </>
               )}
             </AlertDialogAction>

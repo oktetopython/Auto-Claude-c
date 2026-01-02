@@ -631,8 +631,21 @@ if sys.version_info >= (3, 12):
     };
 
     // Set PYTHONPATH to our site-packages
+    // On Windows, we also need to include win32 and win32\lib subdirectories
+    // for pywin32 to work correctly (these are normally added via .pth files
+    // but .pth files are not processed when using PYTHONPATH)
     if (this.sitePackagesPath) {
-      env.PYTHONPATH = this.sitePackagesPath;
+      const pathSep = process.platform === 'win32' ? ';' : ':';
+      const paths = [this.sitePackagesPath];
+      
+      // Add pywin32 paths on Windows
+      if (process.platform === 'win32') {
+        paths.push(path.join(this.sitePackagesPath, 'win32'));
+        paths.push(path.join(this.sitePackagesPath, 'win32', 'lib'));
+        paths.push(path.join(this.sitePackagesPath, 'Pythonwin'));
+      }
+      
+      env.PYTHONPATH = paths.join(pathSep);
     }
 
     return env;

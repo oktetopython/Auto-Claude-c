@@ -33,6 +33,33 @@ CODE_QUALITY_COMMANDS: dict[str, set[str]] = {
     "grype": {"grype"},
     "syft": {"syft"},
     "dockle": {"dockle"},
+    # C/C++ static analysis tools
+    "cppcheck": {"cppcheck"},
+    "clang-tidy": {"clang-tidy", "run-clang-tidy"},
+    "clang-format": {"clang-format"},
+    "iwyu": {"include-what-you-use", "iwyu"},
+    "scan-build": {"scan-build"},
+    # Code complexity analysis
+    "lizard": {"lizard"},
+    "complexity": {"complexity"},
+    "radon": {"radon"},
+    # Memory and runtime analysis
+    "valgrind": {"valgrind", "memcheck", "cachegrind", "callgrind", "helgrind", "drd"},
+    "asan": {"asan"},
+    "msan": {"msan"},
+    "tsan": {"tsan"},
+    "ubsan": {"ubsan"},
+    # CUDA/GPU analysis tools
+    "cuda-tools": {
+        "cuda-memcheck",
+        "compute-sanitizer",
+        "nvprof",
+        "nsys",
+        "ncu",
+        "nsight",
+        "nsight-sys",
+        "nsight-compute",
+    },
 }
 
 
